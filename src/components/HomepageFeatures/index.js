@@ -2,18 +2,13 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import Link from '@docusaurus/Link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {faFileCode} from '@fortawesome/free-regular-svg-icons'
 
-library.add(faFileCode)
 
 
 const FeatureList = [
   {
     title: 'Developer Guides',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    icon: 'faFileCode',
+    icon: '<FaFileCode/>',
     link: '/docs/intro',
     description: (
       <>
@@ -23,8 +18,7 @@ const FeatureList = [
   },
   {
     title: 'Developer Tutorials',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    icon: '',
+    icon: '<FaChalkboardTeacher/>',
     link: '/tutorial',
     description: (
       <>
@@ -34,8 +28,7 @@ const FeatureList = [
   },
   {
     title: 'Blog',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    icon: '',
+    icon: '<FaBlog/>',
     link: '/blog',
     description: (
       <>
@@ -49,10 +42,7 @@ function Feature({Svg, icon, title, link, description}) {
   return (
     <div className='newBox'>
       <Link to= {link} className='page-link'> 
-        <div className="text--center">
-          {/* <div className='icon'>
-            <FontAwesomeIcon icon={`fa-regular ${icon}`} />
-          </div>   */}
+        <div className="text--center"> 
           <div className='title-text'>
             <Heading as="h3">{title}</Heading>
           </div>
