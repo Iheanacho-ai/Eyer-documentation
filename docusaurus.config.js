@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Eyer',
-  tagline: 'The AIOps Observability platform of your dreams',
+  tagline: 'AIOps platform for modern software teams',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -44,7 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/Iheanacho-ai/Eyer-documentation/tree/main/docs',
         },
         blog: {
           showReadingTime: true,
@@ -72,8 +72,34 @@ const config = {
         contextualSearch: true,
         placeholder: 'Search...',
         appId: '1',
-         //other search parameters
+        //other search parameters
       },
+      metadata: [
+        {name: 'keywords', content: 'Eyer, organization, technology, observability'},
+      ],
+      headTags:[
+        {
+          tagName: 'link',
+          attributes: {
+            rel: 'preconnect',
+            href: 'https://www.eyer.ai/',
+          },
+        },
+        // Declare some json-ld structured data
+        {
+          tagName: 'script',
+          attributes: {
+            type: 'application/ld+json',
+          },
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org/',
+            '@type': 'Organization',
+            name: 'Eyer',
+            url: 'https://www.eyer.ai/',
+            logo: '',
+          }),
+        },
+      ],
       navbar: {
         title: 'Eyer',
         logo: {
@@ -94,7 +120,7 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },{
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://discord.gg/FW4FZ9avfs',
             label: 'Discord',
             position: 'right',
           }, 
@@ -117,11 +143,11 @@ const config = {
             items: [
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.gg/FW4FZ9avfs',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://x.com/eyer_ai',
               },
             ],
           },
@@ -139,7 +165,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Eyer.`,
       },
       // plugins: [
       //   [
