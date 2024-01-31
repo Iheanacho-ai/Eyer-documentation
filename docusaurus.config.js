@@ -87,7 +87,7 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          {to: '/tutorial', label: 'Tutorials', position: 'left'},
+          // {to: '/tutorial', label: 'Tutorials', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
@@ -141,45 +141,45 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
-      plugins: [
-        [
-          '@docusaurus/plugin-content-blog',
-          {
-            /**
-             * Required for any multi-instance plugin
-             */
-            id: 'blog',
-            /**
-             * URL route for the blog section of your site.
-             * *DO NOT* include a trailing slash.
-             */
-            routeBasePath: 'blog',
-            /**
-             * Path to data on filesystem relative to site dir.
-             */
-            path: './blog',
-            postsPerPage: 2,
-            feedOptions: {
-              type: 'all',
-              copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            },
-          },
-        ],
-        [
-          '@docusaurus/plugin-content-blog',
-          {
-            id: 'tutorial',
-            routeBasePath: 'tutorial',
-            path: './tutorial',
-            sidebarPath: require.resolve('./sidebarsTutorials.js'),
-            postsPerPage: 2,
-            feedOptions: {
-              type: 'all',
-              copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
-            },
-          },
-        ]
-      ],
+      // plugins: [
+      //   [
+      //     '@docusaurus/plugin-content-blog',
+      //     {
+      //       /**
+      //        * Required for any multi-instance plugin
+      //        */
+      //       id: 'blog',
+      //       /**
+      //        * URL route for the blog section of your site.
+      //        * *DO NOT* include a trailing slash.
+      //        */
+      //       routeBasePath: 'blog',
+      //       /**
+      //        * Path to data on filesystem relative to site dir.
+      //        */
+      //       path: './blog',
+      //       postsPerPage: 2,
+      //       feedOptions: {
+      //         type: 'all',
+      //         copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
+      //       },
+      //     },
+      //   ],
+      //   [
+      //     '@docusaurus/plugin-content-blog',
+      //     {
+      //       id: 'tutorial',
+      //       routeBasePath: 'tutorial',
+      //       path: './tutorial',
+      //       sidebarPath: require.resolve('./sidebarsTutorials.js'),
+      //       postsPerPage: 2,
+      //       feedOptions: {
+      //         type: 'all',
+      //         copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
+      //       },
+      //     },
+      //   ]
+      // ],
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,

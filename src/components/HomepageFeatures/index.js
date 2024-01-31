@@ -19,7 +19,7 @@ const FeatureList = [
   {
     title: 'Developer Tutorials',
     icon: '<FaChalkboardTeacher/>',
-    link: '/tutorial',
+    link: '/',
     description: (
       <>
         Read practical tutorials for every level written by experts
