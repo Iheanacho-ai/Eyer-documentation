@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Eyer the AIOps observability platform for modern software teams">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
