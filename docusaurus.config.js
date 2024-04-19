@@ -46,14 +46,15 @@ const config = {
           editUrl:
             'https://github.com/Iheanacho-ai/Eyer-documentation/tree/main/docs',
         },
-        blog: {
-          showReadingTime: true,
-          blogSidebarCount: 10,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
+        //{
+        //   showReadingTime: true,
+        //   blogSidebarCount: 10,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -66,14 +67,6 @@ const config = {
     ({
       // Replace with your project's social card
       // image: 'img/docusaurus-social-card.jpg',
-      algolia: {
-        apiKey: '1',
-        indexName: '1',
-        contextualSearch: true,
-        placeholder: 'Search...',
-        appId: '1',
-        //other search parameters
-      },
       metadata: [
         {name: 'keywords', content: 'Eyer, organization, technology, observability'},
       ],
@@ -103,8 +96,8 @@ const config = {
       navbar: {
         title: 'Eyer',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Eyer',
+          src: 'img/favicon.ico',
         },
         items: [
           {
@@ -114,9 +107,9 @@ const config = {
             label: 'Documentation',
           },
           // {to: '/tutorial', label: 'Tutorials', position: 'left'},
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/Iheanacho-ai/Eyer-documentation',
             label: 'GitHub',
             position: 'right',
           },{
@@ -154,10 +147,10 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
+              // {
+              //   label: 'Blog',
+              //   to: '/blog',
+              // },
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',

@@ -93,3 +93,7 @@ body, .hero__title{
 [data-theme='dark'] .page-link{
   color: #fff;
 }
+
+[data-theme='dark'] .newBox{
+  color: #fff;
+}

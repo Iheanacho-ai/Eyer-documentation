@@ -12,7 +12,7 @@ const FeatureList = [
     link: '/docs/intro',
     description: (
       <>
-        A comprehensive guide from essentials over in-depth content to integratios
+        AA comprehensive guide covering essentials, in-depth content, and integrations.
       </>
     ),
   },
@@ -22,20 +22,20 @@ const FeatureList = [
     link: '/',
     description: (
       <>
-        Read practical tutorials for every level written by experts
+        Read practical tutorials for every level written by Eyer experts
       </>
     ),
   },
-  {
-    title: 'Blog',
-    icon: '<FaBlog/>',
-    link: '/blog',
-    description: (
-      <>
-        Read our latest articles on strategies, technologies, and all things content.
-      </>
-    ),
-  },
+  // {
+  //   title: 'Blog',
+  //   icon: '<FaBlog/>',
+  //   link: '/blog',
+  //   description: (
+  //     <>
+  //       Read our latest articles on strategies, technologies, and all things content.
+  //     </>
+  //   ),
+  // },
 ];
 
 function Feature({Svg, icon, title, link, description}) {
