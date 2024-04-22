@@ -47,9 +47,7 @@ Before starting your Jetty server, rename the Jolokia WAR-Agent file you previou
 Start your Jetty server with this command.
 
 ```
-
 java -jar $JETTY_HOME/start.jar
-
 ```
 
 Verify that Jetty is running by opening [http://localhost:8080/jolokia](http://localhost:8080/jolokia) in your browser.
@@ -66,7 +64,9 @@ Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.c
 1. Enable authentication using your Eyer agent API token: In the `[outputs.http.headers]` section, locate the authenticate field and replace its value with your Eyer agent API token
 2. Configure Jolokia connection: In the `# # Read JMX metrics from a Jolokia REST agent endpoint` section, make the following changes:
 
-    * Locate the `[[inputs.jolokia2_proxy]]` section and replace the `x.x.x.x` path in the URL with your `jetty-jolokia` IP address.
+    * Duplicate the `[[inputs.jolokia2_proxy]]` section, along with all metrics, for each Atom you wish to monitor. If you're monitoring only one Atom, skip this step.
+
+    * Edit each of the URLs to reflect your Jolokia IP address. Replace the `x.x.x.x` path in the URL with your `jolokia` IP address.
 
       ```
       # # Read JMX metrics from a Jolokia REST agent endpoint
@@ -75,7 +75,7 @@ Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.c
       ```
 
 
-    * Locate the `[[inputs.jolokia2_proxy.target]]` section and replace the `x.x.x.x` path in the URL with your Boomi Atom’s IP address.  
+    * Next, edit each of the urls in the `[[inputs.jolokia2_proxy.target]]` section to reflect the IPs where your atoms are hosted. Replace the `x.x.x.x` path in the URL with your Boomi Atom’s IP address.  
 
       ```
       [[inputs.jolokia2_proxy.target]]
@@ -84,13 +84,12 @@ Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.c
 
 
 
-    If you only monitor a single atom, and if your Telegraf agent is hosted in the same location as the Jolokia agent,
+    If you only monitor a single atom, and if your Telegraf agent is hosted in the same location as the Jolokia agent, use this url:
 
 
     ```
      [[inputs.jolokia2_proxy.target]]
-       # url = "service:jmx:rmi:///jndi/rmi://x.x.x.x:5002/jmxrmi"
-       url = "service:jmx:rmi:///jndi/rmi://localhost:5002/jmxrmi"
+      url = "service:jmx:rmi:///jndi/rmi://localhost:5002/jmxrmi"
     ```
 
 
@@ -101,27 +100,19 @@ Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.c
     * For Windows users, start your Telegraf agent with this command.
 
         ```
-
         telegraf.exe –config telegraf.conf
-
         ```
 
 
     * For Linux users, start your Telegraf agent with this command:
 
       ```
-
-
       sudo systemctl start telegraf
-
-
       ```
     * For MacOS users, start your Telegraf with this command.
 
       ```
-
       telegraf --config telegraf.conf
-
       ```
 
 
