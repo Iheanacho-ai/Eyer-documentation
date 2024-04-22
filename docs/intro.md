@@ -18,6 +18,8 @@ During the initial week of anomaly detection, there may be instances of false po
 
 
 After thoroughly scanning all the time series data, including their frequency and the frequency of value changes (activity), we classify them into three groups based on their frequency and activity. These classification groups are:
+
+
 **High Frequency High activity:** Time series with data points registered more frequently than every 15 minutes and values that change more frequently than every 15 minutes.
 
 
