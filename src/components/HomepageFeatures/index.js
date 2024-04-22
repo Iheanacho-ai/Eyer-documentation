@@ -12,30 +12,40 @@ const FeatureList = [
     link: '/docs/intro',
     description: (
       <>
-        AA comprehensive guide covering essentials, in-depth content, and integrations.
+        A comprehensive guide covering essentials, in-depth content, and integrations.
       </>
     ),
   },
   {
     title: 'Developer Tutorials',
     icon: '<FaChalkboardTeacher/>',
-    link: '/',
+    link: '/docs/tutorials',
     description: (
       <>
-        Read practical tutorials for every level written by Eyer experts
+        Read practical tutorials for every level written by Eyer experts.
       </>
     ),
   },
-  // {
-  //   title: 'Blog',
-  //   icon: '<FaBlog/>',
-  //   link: '/blog',
-  //   description: (
-  //     <>
-  //       Read our latest articles on strategies, technologies, and all things content.
-  //     </>
-  //   ),
-  // },
+  {
+    title: 'References',
+    icon: '<FaChalkboardTeacher/>',
+    link: '/docs/category/references',
+    description: (
+      <>
+        Deepen your understanding of Eyer, from explanation of key concepts to API references.
+      </>
+    ),
+  },
+  {
+    title: 'Troubleshooting & Support',
+    icon: '<FaChalkboardTeacher/>',
+    link: '/docs/troubleshooting-and-support',
+    description: (
+      <>
+        Get the assistance you need with our dedicated support services.
+      </>
+    ),
+  },
 ];
 
 function Feature({Svg, icon, title, link, description}) {
