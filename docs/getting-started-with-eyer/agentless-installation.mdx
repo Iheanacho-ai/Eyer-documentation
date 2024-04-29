@@ -37,36 +37,37 @@ Restart your Atom to see the changes.
 ## Deploying Jolokia in a Jetty server
 
 After you've set up and configured your Boomi Atom, the next step is to create and deploy the Jetty server that will hold your Jolokia agent. To do that follow these steps:
-1. Create a JETTY_HOME variable in your terminal. To create this variable, run this command, replace the `<path to your jetty-home folder>` placeholder with the actual path to your downloaded and unzipped jetty-home folder.
 
-```
-$JETTY_HOME= <path to your jetty-home folder>
-```
+1. Set up a `JETTY_HOME` variable in your terminal by running this command: replace `<path to your jetty-home folder>` with the actual path to your downloaded and unzipped Jetty home folder.
 
-2. Create and change present directory into a jetty-base folder with this terminal command.
-```
-mkdir jetty-base
-cd jetty-base
-```
+  ```
+  $JETTY_HOME= <path to your jetty-home folder>
+  ```
 
-3. Create a `$JETTY_BASE/start.d/` directory and other directories that contain the configuration of the server with this command:
-```
-java -jar $JETTY_HOME/start.jar --add-modules=server,http,ee10-deploy
-```
+2. Create and change your present directory into a jetty-base folder with this terminal command.
+  ```
+  mkdir jetty-base
+  cd jetty-base
+  ```
 
-4. Deploy Jetty's demo web applications with this command:
-```
-java -jar $JETTY_HOME/start.jar --add-module=demos
-```
+3. Next, run this command to create the $JETTY_BASE/start.d/ directory and other configuration directories for the Jetty server.
+  ```
+  java -jar $JETTY_HOME/start.jar --add-modules=server,http,ee10-deploy
+  ```
 
-5. Next, open the jetty-base folder you created in step two. In this folder, you will see the webapps folder, copy your downloaded jolokia agent into this webapps folder.
+4. Deploy the Jetty's demo web applications with this command.
+  ```
+  java -jar $JETTY_HOME/start.jar --add-module=demos
+  ```
+
+5. Next, open the jetty-base folder you created in step two. Inside this folder, there is a webapps folder. Copy your downloaded Jolokia agent file into the webapps folder.
 
 
 6. Start your Jetty server with this command: 
-```
-java -jar $JETTY_HOME/start.jar 
+  ```
+  java -jar $JETTY_HOME/start.jar 
 
-```
+  ```
 
 7. To verify if your Jetty server is running with your Jolokia, go to http://localhost:8080/jolokia/, and you should see this:
 
@@ -76,12 +77,21 @@ java -jar $JETTY_HOME/start.jar
 
 Telegraf is an open-source agent that collects metrics from your applications. Download and install the Telegraf agent that corresponds with your OS from the [InfluxData Downloads page](https://portal.influxdata.com/downloads/).
 
-Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.conf`. This file will replace the original `telegraf.conf` file in your newly downloaded Influx Telegraf folder. Afterward, make the following edits to the configuration file:
+Next, rename the provided `eyer_agentless_telegraf.conf` file to `telegraf.conf`. 
 
+In your new Influx Telegraf folder, replace the existing telegraf.conf file with this renamed one. Then, you can make the following edits to the configuration file."
 
+1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
 
-1. Enable authentication using your Eyer agent API token: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
-2. Configure Jolokia connection: In the `# # Read JMX metrics from a Jolokia REST agent endpoint` section, make the following changes:
+  ```
+  # ## Additional HTTP headers
+    [outputs.http.headers]
+  #   #   # Should be set manually to "application/json" for json data_format
+  #   #   Content-Type = "text/plain; charset=utf-8"
+      authenticate = "you authentication token goes here"
+
+  ```
+2. **Configure Jolokia connection**: In the `# # Read JMX metrics from a Jolokia REST agent endpoint` section, make the following changes:
 
     * Duplicate the `[[inputs.jolokia2_proxy]]` section, along with all metrics, for each Atom you wish to monitor. If you're monitoring only one Atom, skip this step.
 
@@ -103,7 +113,7 @@ Next, rename the provided `eyer_agentless_telegraf.conf` file and to `telegraf.c
 
 
 
-    If you only monitor a single atom, and if your Telegraf agent is hosted in the same location as the Jolokia agent, use this url:
+    If you only monitor a single atom, and your Telegraf agent is hosted in the same location as the Jolokia agent, use this url:
 
 
     ```
