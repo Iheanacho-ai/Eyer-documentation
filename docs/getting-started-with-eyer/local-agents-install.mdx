@@ -90,7 +90,11 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 
 
-6. Next, open your Boomi restart script and locate the "Restart-Service" section. Within this section, add the following lines of code. Be sure to replace `ip_address` in `host=ip_address` with the IP address used in your Jolokia agent process.
+6. Next, in your local atom folder, navigate to the `bin` directory and open up the Windows powershell file. 
+
+    In this file, locate the "Restart-Service -Verbose $srvName" and add the following lines of code.
+
+    Be sure to replace `ip_address` in `host=ip_address` with the IP address used in your Jolokia agent process.
 
 	```
 
