@@ -128,12 +128,14 @@ In the newly downloaded Influx Telegraf folder, replace the existing telegraf.co
 
 3. Save the changes made to the `telegraf.conf` file.
 
-4. When you are done with your edits, register and start the Telegraf agent, depending on your operating system.  
+4. Once you’ve made your changes to the `telegraf.conf` file, change your current directory to the Telegraf folder containing the `telegraf.exe`, and the `telegraf.conf` files.
+
+    Then register and start your Telegraf agent as a service with the following commands for your operating system.  
 
     * For Windows users, start your Telegraf agent with this command.
 
         ```
-        telegraf.exe –config telegraf.conf
+        .\telegraf.exe --service install --config telegraf.conf
         ```
 
 
@@ -142,10 +144,5 @@ In the newly downloaded Influx Telegraf folder, replace the existing telegraf.co
       ```
       sudo systemctl start telegraf
       ```
-    * For MacOS users, start your Telegraf with this command.
 
-      ```
-      telegraf --config telegraf.conf
-      ```
-
-
+  For other operating systems not listed here, check out the [official Telegraf documentation](https://docs.influxdata.com/telegraf/v1/install/).

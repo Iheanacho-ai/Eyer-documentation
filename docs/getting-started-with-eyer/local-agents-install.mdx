@@ -48,9 +48,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 
         ```
-
             tasklist /FI "IMAGENAME eq atom.exe"
-
         ```
 
 
@@ -67,15 +65,14 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 
 
-3. Once you have the PID of the Atom process, replace the ATOM_PID and server ip placeholders with your Atom PID and the Process ID of your Boomi Atom respectively.
+3. Once you have the PID of the Atom process, start your Jolokia agent with this command. Remember to replace the `jolokia-instance`, `ATOM_PID`, and `server_ip` placeholders with the appropriate values:
+    - jolokia-instance -> path to your Jolokia JVM agent download
+    - ATOM PID -> the process ID of your Boomi atom
+    - server_ip -> the IP address of your Boomi atom
 
-    Then start your Jolokia agent with this Java command. Your Jolokia agent must run in the same user as your atom.
 
     ```
-
-
-        java -jar ́jolokia instance  Atom_PID --host= server ip 
-
+        java -jar jolokia-instance  Atom_PID --host= server_ip 
     ```
 
 
@@ -83,9 +80,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 5. Check if Jolokia is running effectively by running this command:
 
     ```
-
     curl http://YOUR_HOSTNAME:8778/jolokia/version
-
     ```
 
 
@@ -109,7 +104,6 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
     Your Restart-Service section should look like this:
 
 	```
-
     Restart-Service -Verbose $srvName
     Start-Sleep -s 5
     for($i=1; $i -le 5; $i++) {
@@ -118,12 +112,11 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
             “$srvName is Running”
         
         $atoms = Get-Process atom | Where-Object {$_.Handles -gt 200} | select -expand id
-        Start-Process java -ArgumentList ‘-jar’, ‘c:/jolokia-jvm-1.7.1.jar --host=ip_address’, $atoms
+        Start-Process java -ArgumentList ‘-jar’, ‘jolokia_instance --host=ip_address’, $atoms
         
             break
         }
     }
-
 
 	```
 
@@ -154,11 +147,7 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 
 
     ```
-
-
     urls = ["http://localhost:8778/jolokia"]
-
-
     ```  
 
 
@@ -168,15 +157,13 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 
 4. Once you’ve made your changes to the `telegraf.conf` file, change your current directory to the Telegraf folder containing the `telegraf.exe`, and the `telegraf.conf` files.
 
-    Then register and start your Telegraf agent with the following commands for your operating system.
-
-
+    Then register and start your Telegraf agent as a service with the following commands for your operating system.
 
 
     * For Windows users, start your Telegraf agent with this command.
 
         ```
-        ./telegraf.exe –config telegraf.conf
+        .\telegraf.exe --service install --config telegraf.conf
         ```
 
 
@@ -187,3 +174,5 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
         sudo systemctl start telegraf
 
         ```
+
+    For other operating systems not listed here, check out the [official Telegraf documentation](https://docs.influxdata.com/telegraf/v1/install/).
