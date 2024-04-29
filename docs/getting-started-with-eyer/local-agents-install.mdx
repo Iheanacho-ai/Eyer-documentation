@@ -44,7 +44,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 1. Install a [Java Development Kit (JDK)](https://www.oracle.com/ng/java/technologies/downloads/) on your Atoms server, as Jolokia requires the tools.jar file.
 2. Next, find the process ID (PID) of your Atom using these commands:
 
-    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process, then take the `atom.exe` process with the highest memory usage.
+    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process. Then take the PID from the `atom.exe` process with the highest memory usage.
 
 
         ```
@@ -90,7 +90,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 
 
-6. Next, in your local atom folder, navigate to the `bin` directory and open up the Windows powershell file. 
+6. Next, in your local Boomi Atom folder, navigate to the `bin` directory and open up the `restart` Windows powershell file. 
 
     In this file, locate the "Restart-Service -Verbose $srvName" and add the following lines of code.
 
