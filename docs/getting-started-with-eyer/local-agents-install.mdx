@@ -87,16 +87,13 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 6. Next, in your local Boomi Atom folder, navigate to the `bin` directory and open up the `restart` Windows powershell file. 
 
-    In this file, locate the "Restart-Service -Verbose $srvName" section and add the following lines of code.
+    In this file, locate the `Restart-Service -Verbose $srvName` section and add the following lines of code.
 
     Be sure to replace, the `jolokia-instance` with the path to your newly downloaded Jolokia JVM agent, and the `ip_address` in `host=ip_address` with your Jolokia agent IP address.
 
 	```
-
 	$atoms = Get-Process atom | Where-Object {$_.Handles -gt 200} | select -expand id
-
     Start-Process java -ArgumentList ‘-jar’, ‘jolokia-instance --host=ip_address’, $atoms
-
 	```
 
 	The code lines above guarantee that when your Boomi Atom restarts and its PID changes, your Jolokia agent will still be able to re-attach itself to the correct process ID
