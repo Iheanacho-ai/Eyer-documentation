@@ -50,15 +50,18 @@ After you've set up and configured your Boomi Atom, the next step is to create a
   cd jetty-base
   ```
 
-3. Next, run this command to create the $JETTY_BASE/start.d/ directory and other configuration directories for the Jetty server.
+
+3. Next, run this command to create the `$JETTY_BASE/start.d/` directory and other configuration directories for the Jetty server.
   ```
   java -jar $JETTY_HOME/start.jar --add-modules=server,http,ee10-deploy
   ```
+
 
 4. Deploy the Jetty's demo web applications with this command.
   ```
   java -jar $JETTY_HOME/start.jar --add-module=demos
   ```
+
 
 5. Next, open the jetty-base folder you created in step two. Inside this folder, there is a webapps folder. Copy your downloaded Jolokia agent file into the webapps folder.
 
@@ -68,6 +71,7 @@ After you've set up and configured your Boomi Atom, the next step is to create a
   java -jar $JETTY_HOME/start.jar 
 
   ```
+
 
 7. To verify if your Jetty server is running with your Jolokia, go to http://localhost:8080/jolokia/, and you should see this:
 
@@ -79,7 +83,7 @@ Telegraf is an open-source agent that collects metrics from your applications. D
 
 Next, rename the provided `eyer_agentless_telegraf.conf` file to `telegraf.conf`. 
 
-In your new Influx Telegraf folder, replace the existing telegraf.conf file with this renamed one. Then, you can make the following edits to the configuration file."
+In the newly downloaded Influx Telegraf folder, replace the existing telegraf.conf file with the renamed one. Then, make the following edits to the `telegraf.conf` file.
 
 1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
 
