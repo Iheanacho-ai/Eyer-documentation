@@ -41,7 +41,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 1. Install a [Java Development Kit (JDK)](https://www.oracle.com/ng/java/technologies/downloads/) on your Atoms server, as Jolokia requires the tools.jar file.
 2. Next, find the process ID (PID) of your Atom using these commands:
 
-    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process.
+    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process. Find, the
 
 
         ```
@@ -64,7 +64,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 
 
-3. Once you have the PID of the Atom process, replace the ATOM_PID and server ip placeholders with your Atom PID and the IP address of your Boomi Atom respectively.
+3. Once you have the PID of the Atom process, replace the ATOM_PID and server ip placeholders with your Atom PID and the Process ID of your Boomi Atom respectively.
 
     Then start your Jolokia agent with this Java command. Your Jolokia agent must run in the same user as your atom.
 
@@ -135,11 +135,10 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 
     * Next, edit each of the URLs to reflect your Jolokia IP address. Replace the `x.x.x.x` path in the URL with your `jolokia` IP address.
 
-
         ```
         # # Read JMX metrics from a Jolokia REST agent endpoint
-        [[inputs.jolokia2_proxy]]
-        urls = ["http://x.x.x.x:8080/jolokia"]
+        [[inputs.jolokia2_agent]]
+        urls = ["http://x.x.x.x:8778/jolokia"]
 
         ```
 
