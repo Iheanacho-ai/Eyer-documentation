@@ -94,13 +94,13 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
     In this file, locate the "Restart-Service -Verbose $srvName" section and add the following lines of code.
 
-    Be sure to replace `ip_address` in `host=ip_address` with your Jolokia agent IP address.
+    Be sure to replace, the `jolokia-instance` to the path of your newly downloaded jolokia JVM agent, and the `ip_address` in `host=ip_address` with your Jolokia agent IP address.
 
 	```
 
 	$atoms = Get-Process atom | Where-Object {$_.Handles -gt 200} | select -expand id
 
-    Start-Process java -ArgumentList ‘-jar’, ‘c:/jolokia-jvm-1.7.1.jar --host=ip_address’, $atoms
+    Start-Process java -ArgumentList ‘-jar’, ‘jolokia-instance --host=ip_address’, $atoms
 
 	```
 
