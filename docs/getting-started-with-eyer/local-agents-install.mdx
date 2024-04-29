@@ -1,8 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Agent - Install option 2 
+# Agent - Install option 1 
+
+> **_NOTE:_** This is the default installation setup. In this setup you deploy a Jolokia agent per Atom host and then have a single Telegraf agent deployed to a seperate instance.
+
 
 The Eyer for Boomi connector setup requires you to download these two components:
 * [Influx Telegraf open source data collector](https://www.influxdata.com/downloads/)
@@ -41,7 +44,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 1. Install a [Java Development Kit (JDK)](https://www.oracle.com/ng/java/technologies/downloads/) on your Atoms server, as Jolokia requires the tools.jar file.
 2. Next, find the process ID (PID) of your Atom using these commands:
 
-    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process. Find, the
+    **For Windows users**: Use the tasklist command in Command Prompt (CMD) to find the PID of the `atom.exe` process, then take the `atom.exe` process with the highest memory usage.
 
 
         ```
@@ -71,7 +74,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
     ```
 
 
-        java -jar ́jolokia instance ́ Atom_PID --host= ́server ip ́
+        java -jar ́jolokia instance  Atom_PID --host= server ip 
 
     ```
 
@@ -97,7 +100,7 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
 
 	```
 
-	The code lines above guarantee that when your Boomi Atom restarts and its PID changes, your Jolokia agent will still be able to re-attach itself to the correct IP address.
+	The code lines above guarantee that when your Boomi Atom restarts and its PID changes, your Jolokia agent will still be able to re-attach itself to the correct process ID
 
     Your Restart-Service section should look like this:
 
@@ -159,7 +162,10 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 3. Save the changes made to the `telegraf.conf` file.
 
 
-4. Once you’ve made your changes to the `telegraf.conf` file,  register, and start your Telegraf agent using the appropriate commands for your operating system.  
+4. Once you’ve made your changes to the `telegraf.conf` file, change your current directory to the Telegraf folder containing the `telegraf.exe`, and the `telegraf.conf` files.
+
+    Then register and start your Telegraf agent with the following commands for your operating system.
+
 
 
 
