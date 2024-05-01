@@ -75,6 +75,13 @@ Next, select the **AND** top-level operator and repeat this process to create a 
 Click the OK button to save the Business rules. 
 
 
+Next, add your desired alerting medium, this documentation uses the Mail connector to send the alerts. To learn how to configure the Mail connector, check out the [Boomi documentation](https://help.boomi.com/docs/atomsphere/integration/connectors/r-atm-mail_connector_4e32e771-5351-4e2c-b1fd-d7bd1bd82f1a/#:~:text=Use%20the%20Mail%20connector%20to,exchanging%20data%20between%20trading%20partners.)
+
+
+Next, add [End and Continue](https://help.boomi.com/docs/atomsphere/integration/process%20building/r-atm-stop_shape_d4dda1a9-8687-4418-8a3d-afe5f9174bc1/) shapes to the lines leading out from the Mail connector, and the Rejected path of the Business rules shape. 
+
+Your process should look like this.
+
 
 ![Save business rule](./img/image6.png)
 
