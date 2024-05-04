@@ -113,6 +113,10 @@ To configure your Jolokia agent, repeat the following processes for each Atom yo
         
             break
         }
+
+        Start-Sleep -s 20
+        Start-Service -Verbose $srvName 
+
     }
 
 	```
@@ -161,6 +165,7 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 
         ```
         .\telegraf.exe --service install --config telegraf.conf
+        .\telegraf.exe --service start
         ```
 
 
