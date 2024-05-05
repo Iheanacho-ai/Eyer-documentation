@@ -1,0 +1,21 @@
+---
+sidebar_position: 1
+---
+
+# Prerequisites
+
+The following are required to install the Eyer Partner Connector agents:
+- The machine learning algorithms rely on a continuous stream of data to learn effectively. So for trial deployments of the agent(s), make sure you choose an environment that closely mimics production. This means an environment with 24/7 uptime, like a QA or testing environment, where both the agents and atoms are constantly running. 
+
+- You must have admin rights on the host you intend to deploy your agent(s).
+
+- To complete the agent setup, you'll need to download data from the following sites. If you can not do this directly from the host where you're installing the agent(s), please download the necessary files in advance and transfer them to the host for deployment:
+    * [Jetty](https://eclipse.dev/jetty/download.php)
+    * [Influx Telegraf open source data collector](https://www.influxdata.com/downloads/)
+    * [Jolokia](https://jolokia.org/download.html)
+    * [Jira Service Management](https://customer.support.eyer.ai/servicedesk/customer/portals) 
+
+- The agentless installation does not require you to set up the Telegraf and Jolokia agents on the hosts running the atoms. However, you must deploy these agents on a host that has network access to the hosts running the Atoms.
+
+- The agent(s) will transmit data to https://data.eyer.ai/api/telegraf over https. Make sure your firewall allows these connections.
+
