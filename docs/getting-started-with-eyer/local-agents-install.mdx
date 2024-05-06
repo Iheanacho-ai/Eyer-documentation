@@ -156,13 +156,16 @@ Next, rename the provided `eyer_telegraf.conf` file to `telegraf.conf`. This new
 3. Save the changes made to the `telegraf.conf` file.
 
 
-4. Once you’ve made your changes to the `telegraf.conf` file, change your current directory to the Telegraf folder containing the `telegraf.exe`, and the `telegraf.conf` files.
-
-    Then register and start your Telegraf agent as a service with the following commands for your operating system.
+4. Once you’ve made your changes to the `telegraf.conf` file. Register and start your Telegraf agent as a service with the following commands for your operating system.
 
 
-    * For Windows users, start your Telegraf agent with this command.
+    * For Windows users, change your current directory to the Telegraf folder. Then, move the `telegraf.exe` and `telegraf.conf` files from `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1` to its parent directory `C:\Program Files\InfluxData\telegraf`:
 
+        ```
+        cd "C:\Program Files\InfluxData\telegraf";
+        mv .\telegraf-1.30.1\telegraf.* .
+        ```
+        Next, install and start up your telegraf service with this command:
         ```
         .\telegraf.exe --service install --config telegraf.conf
         .\telegraf.exe --service start
