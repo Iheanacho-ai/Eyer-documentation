@@ -29,7 +29,7 @@ const FeatureList = [
   {
     title: 'References',
     icon: '<FaChalkboardTeacher/>',
-    link: '/docs/category/references',
+    link: '/docs/references',
     description: (
       <>
         Deepen your understanding of Eyer, from explanation of key concepts to API references.
