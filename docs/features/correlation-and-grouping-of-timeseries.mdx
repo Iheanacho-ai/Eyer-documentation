@@ -1,0 +1,18 @@
+---
+sidebar_position: 3
+---
+
+# Correlation and grouping of time series
+To know how different resources work together we calculate correlation and group the resources based on correlations. This method is meant to be complementary and not substitutive to informed ways of grouping, like user-defined or transaction tracing.
+
+## Correlation
+
+Correlations among different nodes are calculated. This is to give a measurement of how different resources work together. This is done by using the time series data that are already available, without other inputs (like transaction tracing or user-defined topology)
+Pearson correlations among time series are calculated and the max of the absolute values of the intercorrelations among the time series of two nodes is assumed to be the correlation between two nodes (a bit of an overestimate). Currently, only simultaneous correlations within 1 and 15 minutes are considered.
+
+## Grouping using correlation
+
+Groups of nodes are formed by using correlation as a measure. This is to give completely automated information on topology. The correlation is used to define a measure of distance, which is later used for hierarchical clustering. This assigns each node to only one group. Each group contains intercorrelated nodes that have a correlation of at least 0.5. Since we are using hierarchical clustering, nodes that have a correlation above 0.5 might not end up in the same group. For example, if node A and B are correlated, but node A has a stronger correlation with node C, and B and C are not correlated, then A will be in the same correlation group as C, but B will not be included in this group.
+
+
+

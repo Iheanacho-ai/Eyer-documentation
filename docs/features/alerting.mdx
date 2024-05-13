@@ -1,0 +1,9 @@
+---
+sidebar_position: 4
+---
+
+# Alerts
+
+Different anomalies on a single time series are grouped in an alert containing several nodes, to give a bigger context to each anomaly and also to reduce the number of alerts sent to the user. Time series that are in the same node are already considered related, so they will always be alerted together. To capture inter-node relations we are using the groups created by using correlations among nodes. Time series which belong to nodes in the same group are alerted together.
+
+Nodes that have at least one metric with an anomaly that reaches a certain score are included in an alert. The alert is customizable to alert on[ different criticalities: yellow, orange, or red](https://customer.support.eyer.ai/plugins/servlet/servicedesk/customer/confluence/shim/spaces/~71202014c18b381e8747c88cc474c7124636f1/pages/9044073/Univariate+anomaly+detection#Criticality-of-the-anomaly). As more time series are added to the alert the user is re-alerted by using an alerting formula. The alert formula takes into consideration not only how many nodes in a group have anomalies of a certain criticality, but also how many time series have reached that criticality in each of the nodes.  As the alert grows not all the single metric anomalies are immediately re-alerted, but they are alerting in growing batches.

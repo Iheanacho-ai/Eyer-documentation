@@ -1,0 +1,25 @@
+---
+sidebar_position: 5
+---
+
+# ML training
+From the moment data is connected through agents, it will take at least 7 days before Eyer will provide anomaly alerts to the end user. Onboarding is happening on a schedule, every week, the night between Saturday and Sunday. New environments will be onboarded on the first Sunday after they have been active for at least 6 days, and new metrics will be onboarded on the first Sunday after they have been producing enough data (the amount of data can vary depending on the unique behaviour of the metric, but an absolute minimum is 7 data points on average in the last 7 days). For new metrics added to a pre-existing environment, the first week of anomaly detection might produce false positives.
+
+
+In the training period before the anomaly alerts are enabled, the machine learning algorithms will use the data to learn different patterns (baselines) for all metrics that are included in the anomaly detection.
+Even after the initial training is done, the ML will continue to learn new data for increased accuracy of anomaly detection.
+
+
+The reasons for at least 7 days of training are:
+- One full week of data, to enable daily and weekly cycles.
+- More training data reduces the number of false positives and negatives.
+- The last week of data (also after the initial 7 days) will have the highest “weight” in the anomaly detection.
+
+Beyond 7 days we also consider the following data patterns (from current) to classify if there is an anomaly:
+
+- all data between 8 and 28 days (included) from the day for which the corridors are formed.
+- monthly and yearly cycles.
+
+More recent data have a higher weight in the building of baselines, but also weekly monthly, and yearly cycles are up-weighted.
+
+
