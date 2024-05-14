@@ -128,22 +128,40 @@ In the newly downloaded Influx Telegraf folder, replace the existing telegraf.co
 
 3. Save the changes made to the `telegraf.conf` file.
 
-4. Once you’ve made your changes to the `telegraf.conf` file, change your current directory to the Telegraf folder containing the `telegraf.exe`, and the `telegraf.conf` files.
+4. Once you’ve made your changes to the `telegraf.conf` file. Register and start your Telegraf agent as a service by following the commands in the [Telegraf official documentation](https://docs.influxdata.com/telegraf/v1/install/).
 
-    Then register and start your Telegraf agent as a service with the following commands for your operating system.  
 
-    * For Windows users, start your Telegraf agent with this command.
+    * For Windows users: Open Powershell as an adminstrator. In the PowerShell window, run the following commands to navigate to the Telegraf folder and move the `telegraf.exe` and `telegraf.conf` files:
+       
+        ```
+        cd "C:\Program Files\InfluxData\telegraf"; 
+        mv .\telegraf-1.30.1\telegraf.* .
+        ```
+        
+        Next, install telegraf as a service with this command:
+        ```
+       .\telegraf.exe --service install `
+        --config "C:\Program Files\InfluxData\telegraf\telegraf.conf"           
+        ```
+        Run this command to test your Telegraf installation. If successful, you'll see your Atom metrics.
 
         ```
-        .\telegraf.exe --service install --config telegraf.conf
+        .\telegraf.exe `
+        --config C:\"Program Files"\InfluxData\telegraf\telegraf.conf --test
+        ```
+
+        Start telegraf as a service using this command:
+        ```
         .\telegraf.exe --service start
         ```
 
 
+
     * For Linux users, start your Telegraf agent with this command:
 
-      ```
-      sudo systemctl start telegraf
-      ```
+        ```
+        sudo systemctl start telegraf
 
-  For other operating systems not listed here, check out the [official Telegraf documentation](https://docs.influxdata.com/telegraf/v1/install/).
+        ```
+
+    For other operating systems not listed here, check out the [official Telegraf documentation](https://docs.influxdata.com/telegraf/v1/install/).
