@@ -1,0 +1,23 @@
+---
+sidebar_position: 7
+---
+
+# Adjust the Telegraf sampling interval
+
+Only do this if strictly necessary! Reducing the number of samples will have an impact on the correctness of the data transmitted to the Eyer anomaly detection.
+
+To adjust the Telegraf sampling frequency, please open the telegraf .conf file that was provided by Eyer in a text editor. The section to edit is at the top part of the config file, see example below.
+
+
+```conf
+# Configuration for telegraf agent
+[agent]
+  ## Default data collection interval for all inputs
+  interval = "1s"
+  ## Rounds collection interval to 'interval'
+  ## ie, if interval="10s" then always collect on :00, :10, :20, etc.
+  round_interval = true
+```
+Modify the `interval = "1s"` section to the value you want. We do not recommend setting this any lower than 10 seconds, as a lot of datapoints will be missing to calculate the 1 minute aggregation that Telegraf is using.
+
+Save your config file and restart the Telegraf agent for your new settings to be applied.
