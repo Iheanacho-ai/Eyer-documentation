@@ -1,12 +1,12 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Agentless - Install option 2 
+# Data collector install
 
-> **_NOTE:_** This is installation setup is for larger scale production applications. It is used if you do not want to install any other components on the host running the Atoms. All components for collecting metrics and transmitting data to Eyer can be deployed to a seperate host.
+> All components for collecting metrics from the Atoms and transmitting data to Eyer can be deployed to a separate host (for test-setups, all components can be deployed to the Atom host).
 
-The Eyer for Boomi connector setup requires you to download these three components:
+Download these three components to setup the Eyer connector:
 
 * [Jetty (version 12 or higher)](https://eclipse.dev/jetty/download.php)
 * [Influx Telegraf open source data collector](https://www.influxdata.com/downloads/)
@@ -38,7 +38,7 @@ Restart your Atom to see the changes.
 
 After you've set up and configured your Boomi Atom, the next step is to create and deploy the Jetty server that will hold your Jolokia agent. To do that follow these steps:
 
-1. Set up a `JETTY_HOME` variable in your terminal by running this command: replace `<path to your jetty-home folder>` with the actual path to your downloaded and unzipped Jetty home folder.
+1. Create a `JETTY_HOME` variable pointing to your downloaded and extracted Jetty folder with this command. This documentation uses PowerShell as an administrator. If you're using a different terminal, refer to [the documentation](https://www.twilio.com/en-us/blog/how-to-set-environment-variables-html) for instructions on creating variables in various terminals.
 
   ```
   $JETTY_HOME= <path to your jetty-home folder>
@@ -79,11 +79,9 @@ After you've set up and configured your Boomi Atom, the next step is to create a
 
 ## Installing Telegraf 
 
-Telegraf is an open-source agent that collects metrics from your applications. To run your Telegraf as a service, you need to download the [eyer_agentless_telegraf.conf](https://customer.support.eyer.ai/servicedesk/customer/portal/1/article/30015491) file.
+Telegraf is an open-source agent that collects metrics from your applications. To run your Telegraf as a service, download the Eyer `telegraf.conf` file from [this link](https://drive.google.com/uc?export=download&id=1HR1ODNDn57f1cXzsolWZ6p3HBndJJCwl).
 
-Next, rename the provided `eyer_agentless_telegraf.conf` file to `telegraf.conf`. 
-
-In the newly downloaded Influx Telegraf folder, replace the existing telegraf.conf file with the renamed one. Then, make the following edits to the `telegraf.conf` file.
+Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1\telegraf`. Replace the existing `telegraf.conf` file with the downloaded Eyer `telegraf.conf` file.
 
 1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
 
