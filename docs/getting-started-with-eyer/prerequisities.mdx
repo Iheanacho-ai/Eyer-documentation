@@ -9,11 +9,14 @@ The following are required to install the Eyer Partner Connector agents:
 
 - You must have admin rights on the host you intend to deploy your agent(s).
 
-- To complete the agent setup, you'll need to download data from the following sites. If you can not do this directly from the host where you're installing the agent(s), please download the necessary files in advance and transfer them to the host for deployment:
-    * [Jetty](https://eclipse.dev/jetty/download.php)
-    * [Influx Telegraf open source data collector](https://www.influxdata.com/downloads/)
-    * [Jolokia](https://jolokia.org/download.html)
-    * [Jira Service Management](https://customer.support.eyer.ai/servicedesk/customer/portals) 
+- The agent setup requires data from the following sources:
+
+    - [Jetty](https://eclipse.dev/jetty/download.php): Jetty provides a web server and servlet container, supporting features like HTTP/2, WebSocket, and more. It's open-source and free for commercial use.
+    - [Influx Telegraf](https://www.influxdata.com/downloads/): Telegraf is a popular open-source agent for collecting metrics from various sources. 
+    - [Jolokia](https://jolokia.org/download.html): Jolokia acts as a JMX-HTTP bridge, offering an alternative to JSR-160 connectors.
+    
+    **Note:**
+    If directly downloading on the agent host isn't possible, download the files beforehand and transfer them for deployment.
 
 - The agentless installation does not require you to set up the Telegraf and Jolokia agents on the hosts running the atoms. However, you must deploy these agents on a host that has network access to the hosts running the Atoms.
 
