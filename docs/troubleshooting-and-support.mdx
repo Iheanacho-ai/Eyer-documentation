@@ -1,70 +1,62 @@
 ---
 sidebar_position: 7
 ---
-
 # Troubleshooting and Support
+
+import React, { useEffect } from 'react';
+import { faq } from './js/questions.js';
+
+export const Section = () => {
+  useEffect(() => {
+    const acc = document.getElementsByClassName("accordion");
+
+    const handleAccordionClick = (event) => {
+      event.currentTarget.classList.toggle("active");
+      const panel = event.currentTarget.nextElementSibling;
+      const arrow = event.currentTarget.querySelector(".accordion-span");
+
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+        arrow.classList.remove("active");
+      } else {
+        panel.style.display = "block";
+        arrow.classList.add("active");
+      }
+    };
+
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", handleAccordionClick);
+    }
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      for (let i = 0; i < acc.length; i++) {
+        acc[i].removeEventListener("click", handleAccordionClick);
+      }
+    };
+  }, []);
+
+
+
+  return (
+    <div>
+      {faq.map((item, index) => (
+        <div className="accordion-container" key={index}>
+          <div className="accordion">{item.q} <span className="accordion-span">&#x3e;</span></div>
+          <div className="panel">
+            <p>{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+
 
 If you are having any issues, please do not hesitate to reach out to us via our [support email](https://customer.support.eyer.ai/servicedesk/customer/portal/1/create/1) or our [Discord](https://discord.gg/c2nuGEGPs2) channel.
 
 ## Frequently Asked Questions
 These are some common questions our support team receives:
 
-**Q**: Where do I get the agent and connector API keys?
-
-**A**: If you have yet to contact us and subscribe to Eyer, please visit our website at [Eyer - headless AIOps](https://eyer.ai/). If you are subscribed and need help finding your keys, please create a ticket on our [support site.](https://customer.support.eyer.ai/servicedesk/customer/portals)
-
-
-**Q**: My Telegraf agent(s) get a 500 code; how can I fix this?
-
-**A**: [please submit a ticket](https://customer.support.eyer.ai/servicedesk/customer/portal/1/create/1)
-
-
-**Q**: I am not receiving any anomaly alerts; why?
-
-**A**: Eyer needs at least one week of data before automatically enabling anomaly detection. If you already have more than one week of data, another option is that there have not been any situations that trigger an alert.  
-
- 
-**Q**: Can I collect Atom / Molecule metrics without installing agents directly on the host? For instance, monitor a Docker Atom / Molecule?
-
-**A**: Yes, you can. For instructions on how to host the metric collection agent remotely, see the data collector installation[.](https://customer.support.eyer.ai/plugins/servlet/servicedesk/customer/confluence/shim/spaces/EKB/pages/30015491)
-
- 
-
-**Q**: The polling interval set in the Telegraf agent (1s for local installs, 3s for agentless) is too high for my setup. Can I lower these values?
-
-**A**: In short, yes, but be aware that lowering the sampling interval will produce datasets with lower resolutions, which will also impact the datasets used for Eyer machine learning. Short-lived spikes in metrics might not be captured in the aggregated data when the sampling interval is lowered. Please see the [Adjust the Telegraf sampling interval](https://customer.support.eyer.ai/plugins/servlet/servicedesk/customer/confluence/shim/spaces/EKB/pages/34275359) for more information.
-
- 
-
-**Q**: My Eyer - Partner Connector is not able to retrieve any data / not able to connect
-
-**A**: You can manually verify the connection/authentication using a program like [Postman](https://www.postman.com/) and add your authentication token to the header (Authorization). The query (GET) will then look something like https://boomi.eyer.ai/api/anomalies?to=2024-02-20T11:00:00Z (replace the date with the current date)
-
- 
-**Q**: Where should I put my agent authentication key?
-
-*A**: Your agent authentication key should be in the Telegraf config file provided by Eyer, in the [[outputs.http]]/[[outputs.http.headers]]/authenticate section.
-
- 
-**Q**: My Telegraf agent(s) do not receive any JMX data
-
-**A**: Please make sure that the Jolokia agent(s) are running. See the [install guide](https://customer.support.eyer.ai/plugins/servlet/servicedesk/customer/confluence/shim/spaces/EKB/pages/14090241) for information on how to verify
-
-**Q**: How can I verify my Eyer - Partner Connector authentication key manually?
-
-**A**: Please see the above question on “My Eyer - Partner Connector is not able to retrieve any data / not able to connect.”
-
- 
-**Q**: Can I deploy Jolokia / Telegraf on separate VMs / containers, even if I only have a single atom?
-
-**A**: Yes, you can
-
- 
-**Q**: Are there any different monitoring capabilities on atoms vs molecules?
-
-**A**: Currently no
-
-
-**Q**: I have questions that are not answered here
-
-**A**: [Please submit a ticket](https://customer.support.eyer.ai/servicedesk/customer/portal/1/create/1)
+<Section/>

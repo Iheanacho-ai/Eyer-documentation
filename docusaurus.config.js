@@ -123,7 +123,6 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Community',
             items: [
               {
                 label: 'Discord',
@@ -138,6 +137,19 @@ const config = {
         ],
           copyright: `Copyright © ${new Date().getFullYear()} Eyer.`,
       },
+      plugins: [
+        async function myPlugin(context, options) {
+          return {
+            name: "docusaurus-tailwindcss",
+            configurePostCss(postcssOptions) {
+              // Appends TailwindCSS and AutoPrefixer.
+              postcssOptions.plugins.push(require("tailwindcss"));
+              postcssOptions.plugins.push(require("autoprefixer"));
+              return postcssOptions;
+            },
+          };
+        },
+      ],
       // plugins: [
       //   [
       //     '@docusaurus/plugin-content-blog',

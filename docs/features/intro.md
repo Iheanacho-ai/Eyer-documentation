@@ -14,5 +14,8 @@ The next sections will provide detailed descriptions of each part of the ML pipe
 - Univariate anomaly detection
 - Correlation and grouping of time series
 
+## The Eyer Algorithm architecture
+
+
 ![Eyer-Boomi architecture](./img/Eyer_Boomi_architecture.png)
 
