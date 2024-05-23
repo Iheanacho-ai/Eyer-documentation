@@ -34,7 +34,7 @@ Next, click the **OK** button to open the **Business Rules Shape** modal. In thi
 Next, click the **Add** dropdown. In this dropdown, select **Field** from the menu. 
 
 
-**add an image**
+![Add dropdown](../img/image9.jpg)
 
 
 This action will open an **Add a field** modal. In this modal, you'll find an "Alias" field where you can name your Business Rules shape field. For this use case, we'll use the alias "NewAnomalies".
@@ -42,7 +42,7 @@ This action will open an **Add a field** modal. In this modal, you'll find an "A
 Next, click on the **Field** input area to open a New Input modal within this modal. Select this menu: **Object -> new -> Array -> items1 -> Object -> severity**.
 
 
-**add an image**
+![New Anomalies New Input](../img/image26.jpg)
 
 
 Click the **OK -> OK** button to save your collection.
@@ -66,7 +66,7 @@ To create the condition that establishes the field criteria, follow these proces
 * Click the **Save** button
 
 
-**add an image**
+![NewAnomalies](../img/image27.jpg)
 
 
 With this process, you've created a condition to check if the new anomalies have medium severity. 
@@ -78,7 +78,7 @@ Repeat the create a condition process to check for new anomalies with a severity
 
 
 
-**add an image**
+![NewAnomalies](../img/image21.jpg)
 
 
 
@@ -87,7 +87,7 @@ Repeat the create a condition process to check for new anomalies with a severity
 The [Boomi ecosystem offers many connectors](https://help.boomi.com/docs/atomsphere/integration/connectors/c-atm-connectors_bb305b35-0f13-4937-a918-f85dbbe1b27b/) that you can use to receive information on anomalies, with the most popular way of receiving these alerts being the Mail connector.  Check out the [Boomi documentation](https://help.boomi.com/docs/atomsphere/integration/connectors/r-atm-mail_connector_4e32e771-5351-4e2c-b1fd-d7bd1bd82f1a/#:~:text=Use%20the%20Mail%20connector%20to,exchanging%20data%20between%20trading%20partners.) to learn how to connect and configure your Mail connector.
 
 
-**add an image**
+![Complete Boomi process](../img/image17.jpg)
 
 
 The Boomi process checks if the rules defined in the Business Rules Shape are met. If the anomalies meet the criteria, an alert is sent. Otherwise, the process ends.
