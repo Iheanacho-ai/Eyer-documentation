@@ -1,0 +1,139 @@
+---
+sidebar_position: 1
+
+---
+
+# Glossary
+
+:::warning
+
+This documentation is constantly being improved. If you find any issues, please send us an [email](mailto:amarachi2812@gmail.com)
+
+:::
+
+The Eyer documentation talks about relatively new concepts quite often, to ensure that you are on the same page every step of the way. Here is a list of words you might encounter quite often and what they mean.
+
+**Anomaly**
+
+An anomaly is defined as a single metric within a system exhibiting an observable deviation from its normal behavior. This deviation must be sustained, not just a brief fluctuation or occasional oscillation. In other words, normal fluctuations and short bursts are not considered anomalies.
+
+**Normal Behaviour**
+
+Normal behavior is defined as a metric's most common or frequent behavior at a given time. This regular behavior forms the **main baseline**, also known as the **corridor**.
+
+**Well behaved but possible anomaly**
+
+This anomaly deviates slightly from the typical behavior, but it happens frequently enough to be considered normal under most circumstances. However, it could still be a subtle indicator of a larger issue, making it valuable for root cause analysis and early anomaly detection.
+
+**Mostly Known anomaly**
+
+This anomaly deviates from the typical behavior but resembles patterns seen in the past days, weeks, or months. It even shares characteristics with known "non-normal" behaviors, those falling within secondary baselines (corridors). By "non-normal," we mean behaviors distinct from the usual but observed repeatedly in the past. These anomalies can also involve values fluctuating between normal and abnormal ranges, potentially even exceeding secondary baselines without significantly deviating from the main baseline.
+
+**Partly unknown anomaly**
+
+This anomaly significantly departs from typical behavior. While exhibiting some previously seen patterns, it also displays concerning tendencies towards new unseen behavior.
+
+**Unknown Anomaly**
+
+This anomaly strongly deviates from normal behavior with a prevalence of unknown behavior.
+
+**Anomaly alert**
+
+An anomaly alert is a notification triggered when a specific set of conditions are met within a correlation group. These conditions typically involve a defined number of deviations of a certain criticality (x) occurring across a specified number of metrics (y) for a certain number of nodes (z). Upon meeting these criteria, the alert is automatically generated and can be accessed through the Eyer Boomi connector for further investigation.
+
+**Anomaly Alert Timestamp**
+
+An anomaly alert timestamp records the exact moment (date and time) an anomaly alert was generated, whether initial, subsequent updates, or resolution.
+
+**Baseline**
+
+A baseline is a single metric's main and secondary behavior at any given time.
+
+**Baseline creation**
+
+Baseline creation is the initial stage of a two-step anomaly detection process that analyzes single time series data. Occurring periodically (every 24 hours), it establishes reference points for normal behavior by analyzing historical data of the time series. These reference points,  which are the multiple baselines, serve as a benchmark for the subsequent real-time anomaly detection phase, allowing for comparisons and identification of deviations that might signal potential issues.
+
+**Correlation**
+
+Correlations are an indication that two resources might be part of the same process working together, for example, being part of the same business process. 
+
+**Correlation group**
+
+ A correlation group is a set of correlated nodes.
+
+**Criticality Level**
+
+The criticality level describes how many nodes in a correlation group have active deviations. It is classified into different levels:
+
+
+
+* **Yellow**
+
+    This low criticality level includes both usual behavior and anomalies that have been known for some time. It depicts infrequent behavior, most likely harmless, but could potentially signal brief or reoccurring issues.
+
+* **Orange**
+
+    This medium criticality level signifies a mix of familiar and unfamiliar behavior. Anomalies are present, but the system operates normally for extended periods. It's crucial to monitor these anomalies, as they could be escalating or resolving over time.
+
+* **Red**: 
+
+    This indicates a critical situation. The metric is exhibiting mostly unknown behaviors, significantly deviating from what has been observed historically.
+
+
+**Criticality Score**
+
+The criticality score reflects the health of your nodes. It ranges from 0 to 100, with 0 indicating every metric on every node deviates from normal behavior. Conversely, 100 means all metrics for all nodes are operating normally, with no deviations. This score is calculated individually for each node and also for the entire correlation group as a whole.
+
+**Deviation**
+
+A deviation in a single metric refers to the difference between its current behavior and its normal or main behavior at any given point.
+
+**Eyer - Boomi Connector**
+
+The Eyer Boomi connector allows the user to interface the anomaly & correlation engine within a Boomi process.
+
+**Main behaviour**
+
+A node’s main behavior is its most frequent behavior. 
+
+**Multi-baseline behavior**
+
+A multi-baseline behavior is characterized by atleast two behaviors. In which one baseline corresponds to the main behaviour, and he rest describe secondary behaviors that cannot be guaranteed to be anomaly-free. 
+
+**Secondary behavior**
+
+A node’s secondary behaviors are its less frequent behaviors or past anomalies. 
+
+**Node**
+
+A node is a logical unit or system with metrics; examples of nodes in a Boomi monitoring agent are operating_system, execution_manager, and resource_manager.
+
+**Metric**
+
+A metric is a specific, quantifiable measurement that tracks the performance or behavior of a node. 
+
+**Status for Alerts**
+
+Status refers to the stage or condition of an alert throughout its lifecycle, from the moment it is initially triggered until it is resolved and closed. This lifecycle typically involves transitions between different states, such as new, open, and closed.
+
+**System**
+
+Systems are groups of nodes that belong together, often defined by design.
+
+**Time series**
+
+A time series is a dataset that describes the evolution of a metric over time, with each data point containing a value (or several values) and a timestamp.  A time series dataset is classified by Eyer into three main groups:
+
+
+
+* **High Frequency High Activity (HFHA):**
+
+    Time series with data points registered more frequently than every 15 minutes, and that change values more frequently than every 15 minutes. 
+
+* **High Frequency Low Activity (HFLA):**
+
+    Time series with data points registered more frequently than every 15 minutes, and values change every 15 minutes or more slowly.
+
+* **Low Frequency (LF):**
+
+    Times series with data points come in with a typical interval greater than 15 minutes. This can be time-consuming and computationally intensive, therefore it is done once per week.

@@ -1,0 +1,8 @@
+{
+    "label": "Receive alerts depending on anomalies on specific metrics",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "description": "Receive alerts depending on anomalies on specific metrics"
+    }
+}

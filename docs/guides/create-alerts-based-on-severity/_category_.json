@@ -1,0 +1,8 @@
+{
+    "label": "Receive alerts depending on anomalies' severity",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "description": "Receive alerts depending on anomalies' severity"
+    }
+}
