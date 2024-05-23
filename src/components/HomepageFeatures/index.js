@@ -19,7 +19,7 @@ const FeatureList = [
   {
     title: 'Developer Tutorials',
     icon: '<FaChalkboardTeacher/>',
-    link: '/docs/tutorials',
+    link: '/docs/category/tutorials',
     description: (
       <>
         Read practical tutorials for every level written by Eyer experts.
@@ -29,7 +29,7 @@ const FeatureList = [
   {
     title: 'References',
     icon: '<FaChalkboardTeacher/>',
-    link: '/docs/references',
+    link: '/docs/category/references',
     description: (
       <>
         Deepen your understanding of Eyer, from explanation of key concepts to API references.
