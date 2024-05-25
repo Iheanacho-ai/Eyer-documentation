@@ -41,7 +41,7 @@ After you've set up and configured your Boomi Atom, the next step is to create a
 1. Create a `JETTY_HOME` variable pointing to your downloaded and extracted Jetty folder with this command. This documentation uses PowerShell as an administrator. If you're using a different terminal, refer to [the documentation](https://www.twilio.com/en-us/blog/how-to-set-environment-variables-html) for instructions on creating variables in various terminals.
 
   ```
-  $JETTY_HOME= <path to your jetty-home folder>
+  $JETTY_HOME= "path to your jetty-home folder"
   ```
 
 2. Create and change your present directory into a jetty-base folder with this terminal command.
@@ -80,7 +80,7 @@ After you've set up and configured your Boomi Atom, the next step is to create a
 
 Telegraf is an open-source agent that collects metrics from your applications. To run your Telegraf as a service, download the Eyer `telegraf.conf` file from [this link](https://drive.google.com/uc?export=download&id=1HR1ODNDn57f1cXzsolWZ6p3HBndJJCwl).
 
-Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1\telegraf`. Replace the existing `telegraf.conf` file with the downloaded Eyer `telegraf.conf` file.
+Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1\telegraf`. Replace the existing `telegraf.conf` file with the downloaded Eyer `telegraf.conf` file. Then, make the following edits to your Eyer `telegraf.conf` file:
 
 1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
 
@@ -150,6 +150,10 @@ Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Progra
         Start telegraf as a service using this command:
         ```
         .\telegraf.exe --service start
+        ```
+        Check if your Telegraf service is running using this command:
+        ```
+        Get-service Telegraf
         ```
 
 
