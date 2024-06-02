@@ -1,0 +1,17 @@
+---
+sidebar_position: 8
+---
+
+# Security - Boomi data collector
+
+> All the components used to collect Atom performance metrics are based on open source code.
+
+The open source components used are listed below:
+
+1. [Jetty (version 12 or higher)](https://eclipse.dev/jetty/download.php). Jetty can be replaced with Tomcat where needed.
+2. [Influx Telegraf open source data collector](https://www.influxdata.com/downloads/)
+3. [Jolokia (war unsecured agent, version 2.02 or higher)](https://jolokia.org/download.html)
+
+One of the most commonly stated open source security benefits is that having many eyes look at the source code means security vulnerabilities are likely to be found more quickly. Since the code is publicly available, developers from around the world can contribute enhancements and patches, leading to continuous and collective strengthening of the software's security features. This collaborative environment often results in faster response times to emerging threats compared to proprietary software, where updates and fixes may be slower due to limited internal resources
+
+For the Boomi Atoms, only JMX performance metrics are exposed. If any part of the data collector or Eyer backend should be compromised, there will be no way for an attacker to get extended access to your Boomi Atmosphere or business information.

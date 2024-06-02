@@ -1,0 +1,105 @@
+---
+sidebar_position: 3
+---
+
+# Data collector install - Windows installer script version
+
+> All components for collecting metrics from the Atoms and transmitting data to Eyer can be deployed to a separate host (for test-setups, all components can be deployed to the Atom host).
+
+The Eyer connector needs to collect and learn from your atom's data to identify normal and abnormal behaviors. To get started, follow this installation guide:
+
+1. Log in to your[ Boomi AtomSphere account](https://platform.boomi.com/) and select your Atom. Navigate to the **Properties -> Advanced** tab to add and expose the following JMX ports on your Atom:
+    * JMX Remote Port -> Property Value of 5002
+    * JMX Remote RMI Port -> Property Value of 5002
+    * JMX Remote SSL -> Disable this property by leaving its property value checkbox unchecked
+    * JMX Remote Authentication -> Disable this property by leaving its property value checkbox unchecked
+2. Save the changes and restart your atom.
+3. Open your PowerShell terminal as an Administrator.
+4. Run this command to download Telegraf, Jetty, and Jolokia. After downloading, the command will deploy Jolokia on the Jetty server.
+
+```
+
+iex ((New-Object System.Net.WebClient).DownloadString('[https://raw.githubusercontent.com/eyer-development/public-boomi-scripts/master/win-agentless-installer.ps1](https://raw.githubusercontent.com/eyer-development/public-boomi-scripts/master/win-agentless-installer.ps1)'))
+
+```
+
+
+
+5. Next, open the Telegraf folder in your file explorer, usually located in `%AppData%\Roaming\eyer\telegraf` directory.
+6. In your Telegraf folder, open up the `telegraf.conf` file and make the following edits:
+* Locate the `[outputs.http.headers]` section. Replace the authenticate field's value with your Eyer agent API token in this section.
+
+```
+[outputs.http.headers]
+	authenticate = "your_api_key"
+```
+
+
+
+* Duplicate the `[[inputs.jolokia2_proxy]]` section and all metrics for each Atom you wish to monitor. If you're monitoring only one Atom, do not duplicate.
+* Edit each of the URLs to reflect your Jolokia IP address. Replace the `x.x.x.x` path in the URL with your Jolokia IP address. 
+
+``` 
+ # # Read JMX metrics from a Jolokia REST agent endpoint
+    [[inputs.jolokia2_proxy]]
+        url = "http://x.x.x.x:8080/jolokia"
+``` 
+
+
+
+* Next, edit the URLs in the `[[inputs.jolokia2_proxy.target]]` section to reflect the IPs where your atoms are hosted. Replace the `x.x.x.x` path with your Boomi Atom's IP address in the URL.  
+
+```
+[[inputs.jolokia2_proxy.target]]
+    url = "service:jmx:rmi:///jndi/rmi://x.x.x.x:5002/jmxrmi"
+```
+
+If you only monitor a single atom, and your Telegraf agent is hosted in the same location as the Jolokia agent, use this URL:
+
+```
+[[inputs.jolokia2_proxy.target]]
+    url = "service:jmx:rmi:///jndi/rmi://localhost:5002/jmxrmi"
+```
+
+
+
+7. Save the changes made to the telegraf.conf file.
+8. Next, use this command to change your current directory into the Telegraf directory containing the `telegraf.conf` and `telegraf.exe` files.
+
+```
+cd ../../telegraf
+```
+
+
+
+9. Next, install the Telegraf agent as a service in your Powershell terminal.   
+
+```
+.\telegraf.exe --service install `
+--config .\telegraf.conf      
+```
+
+
+
+10. Run this command to test your Telegraf installation. If successful, you'll see your Atom metrics.
+
+```
+.\telegraf.exe `
+--config .\telegraf.conf --test
+```
+
+
+
+11. Start Telegraf as a service using this command:
+
+```
+.\telegraf.exe --service start
+```
+
+
+
+12. Check if your Telegraf service is running using this command:
+
+```
+Get-service Telegraf
+```

@@ -1,0 +1,8 @@
+{
+    "label": "Grafana",
+    "position": 4,
+    "link": {
+      "type": "doc",
+      "id": "grafana/index"
+    }
+  }

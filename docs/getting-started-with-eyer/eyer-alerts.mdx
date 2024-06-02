@@ -1,0 +1,138 @@
+---
+sidebar_position: 6
+---
+
+# Eyer Alerts
+
+This article will explain the data structure and data fields for the Eyer JSON alert, and go into more details on the most important data. All alerts can also be analyzed metric by metric in Grafana - setup Eyer integration 
+
+An alert can have three different statuses:
+- new
+- updated (an alert can have multiple updates)
+- closed
+
+> An update of an alert can happen due to changed severity, or that more systems / nodes / metrics are included in the alert (other metrics can be affected by the initial anomalous behavior, so the alert is updated).
+
+```json
+{
+  "new": [],
+  "updated": [
+    {
+      "severity": "medium",
+      "started": "2024-05-15T13:21:00Z",
+      "ended": null,
+      "updated": "2024-05-15T14:23:00Z",
+      "id": "6644b718eb5838c9d4ca9041",
+      "items": [
+        {
+          "node": {
+            "id": 101,
+            "name": "Operating System. http://10.0.1.161:8778/jolokia",
+            "system": {
+              "id": 1,
+              "name": "http://10.0.1.161:8778/jolokia"
+            }
+          },
+          "metrics": [
+            {
+              "id": "a59df24a-e9ec-4c4c-a087-ea1375d4b9c7",
+              "name": "Process CPU Load",
+              "metric_type": "double",
+              "aggregation": "avg",
+              "severity": "severe",
+              "started": "2024-05-15T13:20:00Z",
+              "updated": "2024-05-15T14:23:00Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "closed": []
+}
+
+```
+*JSON structure of the Eyer alerts, example above contains an updated anomaly alert on a single metric.*
+ 
+
+For more information on the anomaly alert timeline and how alerts are updating, please see [Anomaly alert timeline explained](../features/alerting.mdx) 
+
+ 
+```json
+{
+  "severity": "medium",
+  "started": "2024-05-15T13:21:00Z",
+  "ended": null,
+  "updated": "2024-05-15T14:23:00Z",
+  "id": "6644b718eb5838c9d4ca9041"
+}
+```
+ 
+
+The section of the alert immediately following either new [], updated [] or closed [], contains data about the overall alert. In the screenshot above we see that the alert:
+
+- is an update
+
+- has an overall “medium” severity. The alert severity is a reflection of the overall impact of all the metrics participating in the alert.
+
+- has a start date (when the alert was initially triggered).
+
+- has “null” as ended. This means that the alert is still ongoing.
+
+- has the “updated” timestamp populated. This means that there was an update of the initial alert at this timestamp.
+
+- has a unique Id. This Id will be the same throughout the alerts lifecycle until closed.
+
+ 
+
+```json
+{
+  "items": [
+    {
+      "node": {
+        "id": 101,
+        "name": "Operating System. http://10.0.1.161:8778/jolokia",
+        "system": {
+          "id": 1,
+          "name": "http://10.0.1.161:8778/jolokia"
+        }
+      },
+      "metrics": [
+        {
+          "id": "a59df24a-e9ec-4c4c-a087-ea1375d4b9c7",
+          "name": "Process CPU Load",
+          "metric_type": "double",
+          "aggregation": "avg",
+          "severity": "severe",
+          "started": "2024-05-15T13:20:00Z",
+          "updated": "2024-05-15T14:23:00Z"
+        }
+      ]
+    }
+  ]
+}
+```
+
+The “items” section contains details about which systems, nodes and metrics that are part of the alert (for Boomi, see Boomi data collector metrics & structure .
+
+- a node is a grouping of metrics. In the example over, the metric is in the node “Operating System”.
+
+- a system. In the example above, the system is an Atom. The name is derived from where the Atom is hosted, plus its ContainerId. A system can have multiple nodes.
+
+- metrics. A node can host multiple metrics, but in the example above, only a single metric on that node has an ongoing anomaly (“Process CPU Load”).
+
+- severity. The severity shown per metric does not have to be the same severity as for the alert.
+
+- metric_type: Metric type (double, int)
+
+- aggregation: Type of aggregation (avg, max, count)
+
+- started timestamp. When an anomaly on that metric was first detected.
+
+- updated timestamp. When a change in severity last occured.
+
+
+
+
+ 
+
