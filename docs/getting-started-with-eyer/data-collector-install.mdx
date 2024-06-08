@@ -78,19 +78,15 @@ After you've set up and configured your Boomi Atom, the next step is to create a
 
 ## Installing Telegraf 
 
-Telegraf is an open-source agent that collects metrics from your applications. To run your Telegraf as a service, download the Eyer `telegraf.conf` file from [this link](https://drive.google.com/uc?export=download&id=1HR1ODNDn57f1cXzsolWZ6p3HBndJJCwl).
+Telegraf is an open-source agent that collects metrics from your applications. To run your Telegraf as a service, download the Eyer `eyer_agentless_telegraf.conf` file from [this link](https://github.com/eyer-development/public-boomi-scripts/blob/master/eyer_agentless_telegraf.conf).
 
-Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1\telegraf`. Replace the existing `telegraf.conf` file with the downloaded Eyer `telegraf.conf` file. Then, make the following edits to your Eyer `telegraf.conf` file:
+Next, copy the `eyer_agentless_telegraf.conf` file into your InfluxDB Telegraf folder, typically located at `C:\Program Files\InfluxData\telegraf\telegraf-1.30.1\telegraf`. Then, make the following edits to your Eyer `eyer_agentless_telegraf.conf` file:
 
-1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token
+1. **Enable authentication using your Eyer agent API token**: Locate the `[outputs.http.headers]` section, in this section, replace the authenticate field's value with your Eyer agent API token.
 
   ```
-  # ## Additional HTTP headers
-    [outputs.http.headers]
-  #   #   # Should be set manually to "application/json" for json data_format
-  #   #   Content-Type = "text/plain; charset=utf-8"
-      authenticate = "you authentication token goes here"
-
+  [outputs.http.headers]
+		authenticate = "your_api_key"
   ```
 2. **Configure Jolokia connection**: In the `# # Read JMX metrics from a Jolokia REST agent endpoint` section, make the following changes:
 
@@ -123,28 +119,28 @@ Next, navigate to your InfluxDB Telegraf folder, typically located at `C:\Progra
     ```
 
 
-3. Save the changes made to the `telegraf.conf` file.
+3. Save the changes made to the `eyer_agentless_telegraf.conf` file.
 
-4. Once you’ve made your changes to the `telegraf.conf` file. Register and start your Telegraf agent as a service by following the commands in the [Telegraf official documentation](https://docs.influxdata.com/telegraf/v1/install/).
+4. Once you’ve made your changes to the `eyer_agentless_telegraf.conf` file. Register and start your Telegraf agent as a service by following the commands in the [Telegraf official documentation](https://docs.influxdata.com/telegraf/v1/install/).
 
 
-    * For Windows users: Open Powershell as an adminstrator. In the PowerShell window, run the following commands to navigate to the Telegraf folder and move the `telegraf.exe` and `telegraf.conf` files:
+    * For Windows users: Open Powershell as an adminstrator. In the PowerShell window, run the following commands to navigate to the Telegraf folder and move the `telegraf.exe`, `telegraf.conf`, and `eyer_agentless_telegraf.conf` files:
        
         ```
         cd "C:\Program Files\InfluxData\telegraf"; 
-        mv .\telegraf-1.30.1\telegraf.* .
+        mv .\telegraf-1.30.3\telegraf.* .
         ```
         
         Next, install telegraf as a service with this command:
         ```
        .\telegraf.exe --service install `
-        --config "C:\Program Files\InfluxData\telegraf\telegraf.conf"           
+        --config "C:\Program Files\InfluxData\telegraf\eyer_agentless_telegraf.conf"           
         ```
         Run this command to test your Telegraf installation. If successful, you'll see your Atom metrics.
 
         ```
         .\telegraf.exe `
-        --config C:\"Program Files"\InfluxData\telegraf\telegraf.conf --test
+        --config C:\"Program Files"\InfluxData\telegraf\eyer_agentless_telegraf.conf --test
         ```
 
         Start telegraf as a service using this command:

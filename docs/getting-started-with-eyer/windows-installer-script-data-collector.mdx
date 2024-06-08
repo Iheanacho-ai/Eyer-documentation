@@ -18,14 +18,12 @@ The Eyer connector needs to collect and learn from your atom's data to identify 
 4. Run this command to download Telegraf, Jetty, and Jolokia. After downloading, the command will deploy Jolokia on the Jetty server.
 
 ```
-
 iex ((New-Object System.Net.WebClient).DownloadString('[https://raw.githubusercontent.com/eyer-development/public-boomi-scripts/master/win-agentless-installer.ps1](https://raw.githubusercontent.com/eyer-development/public-boomi-scripts/master/win-agentless-installer.ps1)'))
-
 ```
 
 
 
-5. Next, open the Telegraf folder in your file explorer, usually located in `%AppData%\Roaming\eyer\telegraf` directory.
+5. The command above opens up the Telegraf folder in your file explorer, usually located in `%AppData%\Roaming\eyer\telegraf directory`.
 6. In your Telegraf folder, open up the `telegraf.conf` file and make the following edits:
 * Locate the `[outputs.http.headers]` section. Replace the authenticate field's value with your Eyer agent API token in this section.
 
