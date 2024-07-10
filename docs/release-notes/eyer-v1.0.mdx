@@ -1,0 +1,102 @@
+---
+sidebar_position: 1
+---
+
+# Eyer v1.0: Introducing Eyer
+
+
+The team is excited to announce the release of Eyer Boomi connector v 1.0.  
+
+
+We are big fans of Boomi and its superpower to connect various applications and unify data across different systems seamlessly. 
+
+We at Eyer have spent almost a decade gathering domain expertise in the integration and the AI landscape. Our extensive experience in this space has fueled the development of an AI-powered tool that equips you with unparalleled visibility, empowering you to take control of all your integrations like never before.
+
+
+**So, what exactly is Eyer?**
+
+Eyer is an automated time-series AIOps observability tool that seamlessly integrates with your existing Boomi processes thanks to its headless architecture. It analyzes your data, providing AI-driven insights that empower you to proactively address anomalous system behavior before it escalates into critical issues that potentially cause business disruption and lost revenues.
+
+
+## Why we built Eyer
+
+Unforeseen application outages are a common and persistent challenge in the tech world, so much so that this phenomenon has been immortalized in anecdotes throughout tech culture. This problem has only worsened with the explosion of data and services, a natural consequence of modern IT development.
+
+Recognizing this escalating challenge, we at Eyer saw the need for more proactive, data-driven insights to prevent these outages long before they occur.
+
+The way to do this? By leveraging automation and algorithms in a scalable and efficient way that specifically caters to the size and scope of modern IT.
+
+Eyer stands out in a sea of observability and monitoring tools. It goes beyond paying attention to pre-defined metrics; instead, it actively analyzes your data and determines what the normal behavior of your system is and should be. This benchmarking allows Eyer to proactively alert you to deviations from this normalcy (anomalies), helping you identify potential issues before they escalate. Additionally, Eyer is lightweight and user-friendly and uses APIs for seamless integration with your existing Boomi processes.
+
+
+## Key Features
+
+The Eyer Boomi connector v 1.0 will have the following features:
+
+
+**Early warning (anomaly detection)**
+
+After feeding your data into Eyer, its machine learning algorithm analyses this data and establishes each monitored metric's primary and secondary normal behaviors. 
+
+These normal behaviors, referred to as baselines, act as a reference point to identify any significant deviations that might signal potential issues.
+
+To ensure accurate detection, Eyer takes into account that metric behaviors can be cyclical, with certain times of day or days of the week experiencing more or less activity than others. 
+
+Therefore, Eyer establishes these cyclical patterns within the initial seven days.
+
+Additionally, Eyer only draws attention to and alerts you on significant deviations from the baseline as we understand that fluctuations and oscillations in data are perfectly normal. 
+
+The best part of this process is that you do not need to manually label this data or tell Eyer what's normal or anomalous. It identifies these patterns all on its own.
+
+
+**Root cause detection**
+
+At Eyer, we use two distinct approaches to anomaly detection, which are:
+
+
+
+* **Univariate anomaly detection**: In this approach, Eyer analyzes each time series data individually, looking for ways these data or metrics significantly differ from their normal behaviors
+* **Correlation calculations and grouping**: In this second approach, Eyer analyzes how these data points from various time series move together or diverge. This allows Eyer to identify groups of related metrics that exhibit similar behavior, potentially indicating shared causes for anomalies.
+
+By combining these two approaches, Eyer provides a comprehensive view of your integrations, enabling you to identify potential root causes and make informed decisions within your Boomi processes.
+
+
+**Impact detection**
+
+Another strength of Eyer's correlation calculations and grouping approach to anomaly detection is its ability to tell you when something is wrong with a metric and other areas that might be directly or indirectly impacted.
+
+This approach provides a holistic view of the potential cascading impact. This allows developers to understand the bigger picture and prioritize issues based on their potential to disrupt multiple areas or cause widespread problems.
+
+
+**Insight**
+
+Leveraging AI-powered analysis, Eyer helps you understand the root cause of issues, including what went wrong, why it happened, and potential downstream impacts you might miss.
+
+After analyzing metrics and pinpointing the problem, Eyer groups related errors and context into a single "Eyer anomaly alert." These alerts contain warnings about the anomaly and potential impacts on Atom & Molecule performance metrics like throughput, latency, queues, statuses, and runtime processing.
+
+This comprehensive approach in Eyer's anomaly alerts minimizes the number you receive while ensuring you have all the vital information. This reflects Eyer's commitment to user experience, acknowledging the potential fatigue caused by excessive notifications.
+
+
+**Take action based on anomaly alerts**
+
+The Eyer Boomi connector v1.0 empowers you to take complete control and respond to Eyer's alerts within your Boomi integrations. You can choose to:
+
+
+* Manually investigate and address issues: Utilize the insights provided by Eyer to diagnose and resolve problems.
+* Automate responses: Leverage specific anomaly alerts to trigger pre-defined actions, enabling swift and efficient handling of critical issues.
+
+
+## Getting Started with Eyer
+
+The Eyer Partner connector is designed for existing Boomi users. To use it, you must have [Boomi installed](https://help.boomi.com/docs/Atomsphere/Integration/Atom,%20Molecule,%20and%20Atom%20Cloud%20setup/c-atm-Atom_setup_f7dedf01-31c1-4642-824b-9c76d5d0bf8e) and familiarize yourself with its functionality.
+
+To get started with the Eyer-Partner connector, check out the [Getting Started section of the Eyer guide](docs/getting-started-with-eyer/prerequisities.mdx). 
+
+
+## Future Plans
+
+The future of Eyer holds exciting developments, including:
+
+* **Integration with Grafana**: Eyer for Grafana allows users to transform insights into visually engaging dashboards and reports. This integration empowers users with varying technical expertise to access and utilize Eyer's insights, facilitating informed decision-making.
+* **Integration with BizTalk**: Eyer for BizTalk unlocks AI-powered observability for BizTalk and related technologies.
+* **Open APIs**: Eyer seamlessly integrates with your existing technologies through standard Open APIs.
