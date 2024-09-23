@@ -1,11 +1,11 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
-# Grafana - setup Eyer integration
-This article assumes that you already have a [Grafana Cloud account](https://grafana.com/products/cloud/). Eyer stores all the visualization data in a centralized InfluxDB, so to access your metrics, you need to request an access token. If you have not received one already, you can do so on our Discord server.
+# Grafana - visualize the metrics from Eyer
+This article assumes that you already have a [Grafana Cloud account](https://grafana.com/products/cloud/) and have created a [Grafana dashboard template for your data](docs/grafana/dashboard-generation-api.md). Eyer stores all the visualization data in a centralized InfluxDB, so to access your metrics, you need to request an access token. If you have not received one already, you can do so on our Discord server.
  
 
-1. In Grafana, navigate to **Connections → Add new connection** and select **InfluxDB**.
+1. Once you have a Grafana dashboard template, open your Grafana instance and navigate to **Connections → Add new connection** and select **InfluxDB**.
 ![](https://paper-attachments.dropboxusercontent.com/s_D2B10767AE90151F6CFF1F8B351FA8F0A7D801254F85B305E6909193FE387D06_1717331203743_image-20240527-063728.png)
 
 
